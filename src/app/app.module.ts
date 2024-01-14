@@ -1,3 +1,4 @@
+import { Page404Component } from './pages/page404/page404.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,6 +24,7 @@ import { ModalConfirmacaoComponent } from './components/modal-confirmacao/modal-
     LoadingComponent,
     NovoOrcamentoComponent,
     ModalConfirmacaoComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
