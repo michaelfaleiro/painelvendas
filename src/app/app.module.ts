@@ -1,6 +1,7 @@
 import { Page404Component } from './pages/page404/page404.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,8 +33,13 @@ import { ModalConfirmacaoComponent } from './components/modal-confirmacao/modal-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskDirective,
   ],
-  providers: [],
+  providers: [
+    provideNgxMask({
+      /* opções de cfg */
+    }),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
