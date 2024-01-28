@@ -30,7 +30,7 @@
                         <a routerLink="/orcamentos/{{item.id}}">{{item.cliente | titlecase}}</a>
                     </td>
                     <td class="px-1 py-2 ">{{item.carro | titlecase}}</td>
-                    <td class="px-1 py-2 ">{{item.placa}}</td>
+                    <td class="px-1 py-2 ">{{item.placa | uppercase}}</td>
                     <td class="px-1 py-2 ">{{item.chassis}}</td>
                     <td class="px-1 py-2 ">{{item.createdAt | date: 'dd/MM/yyyy HH:mm'}}</td>
                     <td class="flex gap-2 justify-center ">

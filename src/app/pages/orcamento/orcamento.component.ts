@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TOrcamento } from '../../types/TOrcamento';
 import { OrcamentoService } from '../../services/orcamento/orcamento.service';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './orcamento.component.html',
   styleUrl: './orcamento.component.css',
 })
-export class OrcamentoComponent {
+export class OrcamentoComponent implements OnInit {
   orcamentos$ = new Observable<TOrcamento[]>();
   showModalNovoProduto: boolean = false;
   showModalConfirm: boolean = false;
@@ -17,22 +17,22 @@ export class OrcamentoComponent {
   constructor(
     private orcamentoService: OrcamentoService,
     private cdr: ChangeDetectorRef
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.getOrcamentos();
   }
 
   getOrcamentos() {
     this.orcamentos$ = this.orcamentoService.getAll();
-    this.orcamentos$.subscribe(() => {
-      this.cdr.detectChanges();
-    });
+    this.orcamentos$.subscribe({ next: () => this.cdr.detectChanges() });
   }
 
   removeOrcamento(id: string) {
     console.log('remove');
     this.orcamentoService
       .removeOrcamento(id)
-      .subscribe(() => this.getOrcamentos());
+      .subscribe({ next: () => this.getOrcamentos() });
   }
 
   showModal() {
